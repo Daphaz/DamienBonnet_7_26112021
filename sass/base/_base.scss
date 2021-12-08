@@ -1,0 +1,59 @@
+*,
+*::before,
+*::after {
+	box-sizing: border-box;
+	margin: 0;
+	padding: 0;
+}
+
+html {
+	font-size: 10px;
+	line-height: 1;
+	scroll-behavior: smooth;
+}
+
+body {
+	position: relative;
+	@extend %description-16;
+	font-family: $fnt_lato;
+	background-color: $clr_white;
+	color: $clr_black;
+
+	transition: 0.3s ease;
+}
+
+main {
+	overflow-x: hidden;
+}
+
+a {
+	text-decoration: none;
+	outline: none;
+	color: inherit;
+}
+
+button {
+	cursor: pointer;
+	color: inherit;
+	background: none;
+	border: none;
+	outline: none;
+}
+
+.container {
+	width: 100%;
+	max-width: 1440px;
+	margin: 0 auto;
+	padding: 0 100px;
+	transition: 0.3s ease;
+
+	@include xl {
+		padding: 0 80px;
+	}
+	@include lg {
+		padding: 0 40px;
+	}
+	@include md {
+		padding: 0 20px;
+	}
+}
