@@ -1,0 +1,25 @@
+:root {
+	--clr-white: #ffffff;
+	--clr-black: #000000;
+	--clr-grey400: #c7bebe;
+	--clr-grey200: #e7e7e7;
+	--clr-blue: #3282f7;
+	--clr-green: #68d9a4;
+	--clr-red: #ed6454;
+}
+
+// Colors.
+$clr_white: var(--clr-white);
+$clr_black: var(--clr-black);
+$clr_grey400: var(--clr-grey400);
+$clr_grey200: var(--clr-grey200);
+$clr_blue: var(--clr-blue);
+$clr_green: var(--clr-green);
+$clr_red: var(--clr-red);
+
+// Fonts.
+$fnt_lato: "Lato", sans-serif;
+$fnt_rbt: "Roboto", sans-serif;
+
+// Easing.
+$ease-out-expo: cubic-bezier(0.19, 1, 0.22, 1);
