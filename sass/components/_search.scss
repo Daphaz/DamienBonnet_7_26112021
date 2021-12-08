@@ -1,0 +1,43 @@
+.search {
+	display: flex;
+	flex-wrap: wrap;
+	align-items: center;
+	gap: 20px;
+	padding: 25px 0px 15px;
+	transition: 0.3s ease;
+
+	@include md {
+		gap: 12px;
+	}
+
+	&__tag {
+		@extend %center;
+		padding: 8px 22px;
+		border-radius: 5px;
+		color: $clr_white;
+
+		&.bg {
+			&-blue {
+				background-color: $clr_blue;
+			}
+			&-green {
+				background-color: $clr_green;
+			}
+			&-red {
+				background-color: $clr_red;
+			}
+		}
+	}
+
+	&__label {
+		margin-right: 13px;
+		font-weight: 700;
+		font-size: 14px;
+		line-height: 17px;
+		transform: translateY(-2px);
+	}
+
+	&__btn {
+		font-size: 20px;
+	}
+}

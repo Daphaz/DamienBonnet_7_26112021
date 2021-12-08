@@ -1,0 +1,118 @@
+.filter {
+	display: flex;
+	flex-wrap: wrap;
+	column-gap: 20px;
+	transition: 0.3s ease;
+	padding-bottom: 25px;
+
+	@include md {
+		display: block;
+	}
+
+	&__item {
+		color: $clr_white;
+		border-radius: 5px;
+		padding: 0px 26px 16px 19px;
+		height: 69px;
+		transition: all 0.4s $ease-out-expo;
+
+		@include md {
+			&:not(:last-child) {
+				margin-bottom: 15px;
+			}
+		}
+
+		&.expand {
+			height: 100%;
+
+			.filter__body {
+				display: flex;
+			}
+
+			.filter__header {
+				button {
+					i {
+						transform: rotate(180deg);
+					}
+				}
+			}
+		}
+
+		&.bg {
+			&-blue {
+				background-color: $clr_blue;
+
+				.filter__header {
+					background-color: $clr_blue;
+				}
+			}
+			&-green {
+				background-color: $clr_green;
+
+				.filter__header {
+					background-color: $clr_green;
+				}
+			}
+			&-red {
+				background-color: $clr_red;
+
+				.filter__header {
+					background-color: $clr_red;
+				}
+			}
+		}
+	}
+
+	&__header {
+		width: 100%;
+		position: relative;
+		@extend %between;
+		padding-top: 23px;
+		padding-bottom: 16px;
+		z-index: 1;
+
+		input {
+			color: $clr_white;
+			flex-shrink: 0;
+			font-family: $fnt_lato;
+			background-color: transparent;
+			border: none;
+			outline: none;
+			font-size: 18px;
+			font-weight: 700;
+			max-width: 111px;
+
+			&::placeholder {
+				color: $clr_white;
+			}
+		}
+
+		button {
+			font-size: 16px;
+			i {
+				transition: transform 0.4 ease;
+				transform: rotate(0deg);
+			}
+		}
+	}
+
+	&__body {
+		display: none;
+		justify-content: space-between;
+		flex-wrap: wrap;
+		column-gap: 100px;
+		max-width: 667px;
+
+		&_col {
+			flex-grow: 1;
+		}
+
+		button {
+			display: block;
+			font-family: $fnt_lato;
+			text-align: left;
+			font-size: 18px;
+			padding-bottom: 10px;
+		}
+	}
+}
