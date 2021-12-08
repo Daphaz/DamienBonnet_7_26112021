@@ -1,36 +1,249 @@
 <!DOCTYPE html>
 <html lang="fr">
-<head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Les Petits plats</title>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" integrity="sha512-Fo3rlrZj/k7ujTnHg4CGR2D7kSs0v4LLanw2qksYuRlEzO+tcaEPQogQ0KaoGN26/zrn20ImR1DfuLWnOo7aBA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-  <link rel="stylesheet" href="style.css">
-</head>
-<body>
-  <!-- Header -->
-  <header class="header">
-  <img class="header__logo" src="./assets/logo.png" alt="Les Petits plats">
-  <form id="main-form">
-    <label for="search">
-      <input type="text" name="search" id="search">
-      <button type="submit"><i class="fas fa-search"></i></button>
-    </label>
-  </form>
-  </header>
-  <!-- !Header-->
-  <main>
-    <!-- Filter-->
-    <div class="filter__display"></div>
-    <div class="filter">
-      <div class="filter__label">
-      <input type="text" name="ingredients" id="ingredients" placeholder="ingredients">
-      <i class="fas fa-chevron-down"></i>
-      </div>
-      <div class="filter__list"></div>
-    </div>
-    <!-- !Filter-->
-  </main>
-</body>
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Les Petits plats</title>
+		<link rel="preconnect" href="https://fonts.googleapis.com" />
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+		<link
+			href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700&family=Roboto&display=swap"
+			rel="stylesheet"
+		/>
+		<link
+			rel="stylesheet"
+			href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
+			integrity="sha512-Fo3rlrZj/k7ujTnHg4CGR2D7kSs0v4LLanw2qksYuRlEzO+tcaEPQogQ0KaoGN26/zrn20ImR1DfuLWnOo7aBA=="
+			crossorigin="anonymous"
+			referrerpolicy="no-referrer"
+		/>
+		<link rel="stylesheet" href="./sass/main.css" />
+	</head>
+	<body>
+		<!-- Header -->
+		<header class="header container">
+			<img class="header__logo" src="./assets/logo.png" alt="Les Petits plats" />
+			<form id="main-form" class="header__form">
+				<input
+					type="text"
+					name="search"
+					id="search"
+					class="header__form__input"
+					placeholder="Rechercher un ingrédient, appareil, ustensiles ou une recette"
+				/>
+				<button type="submit" class="header__form__btn">
+					<i class="fas fa-search"></i>
+				</button>
+			</form>
+		</header>
+		<!-- !Header-->
+		<main class="container">
+			<!-- Search -->
+			<div class="search">
+				<div class="search__tag bg-blue">
+					<p class="search__label">Coco</p>
+					<button type="button" class="search__btn">
+						<i class="far fa-times-circle"></i>
+					</button>
+				</div>
+				<div class="search__tag bg-green">
+					<p class="search__label">Coco</p>
+					<button type="button" class="search__btn">
+						<i class="far fa-times-circle"></i>
+					</button>
+				</div>
+				<div class="search__tag bg-red">
+					<p class="search__label">Coco</p>
+					<button type="button" class="search__btn">
+						<i class="far fa-times-circle"></i>
+					</button>
+				</div>
+			</div>
+			<!-- !Search -->
+			<!-- Filter-->
+			<div class="filter">
+				<div class="filter__item bg-blue">
+					<div class="filter__header">
+						<input
+							type="text"
+							name="ingredients"
+							id="ingredients"
+							placeholder="Ingrédients"
+						/>
+						<button type="button">
+							<i class="fas fa-chevron-down"></i>
+						</button>
+					</div>
+					<div class="filter__body">
+						<div class="filter__body_col">
+							<button type="button">Lait de Coco</button>
+							<button type="button">Lait de Coco</button>
+							<button type="button">Lait de Coco</button>
+							<button type="button">Lait de Coco</button>
+						</div>
+						<div class="filter__body_col">
+							<button type="button">Lait de Coco</button>
+							<button type="button">Lait de Coco</button>
+							<button type="button">Lait de Coco</button>
+							<button type="button">Lait de Coco</button>
+						</div>
+						<div class="filter__body_col">
+							<button type="button">Lait de Coco</button>
+							<button type="button">Lait de Coco</button>
+							<button type="button">Lait de Coco</button>
+							<button type="button">Lait de Coco</button>
+						</div>
+					</div>
+				</div>
+				<div class="filter__item bg-green">
+					<div class="filter__header">
+						<input type="text" name="appareil" id="appareil" placeholder="Appareil" />
+						<button type="button">
+							<i class="fas fa-chevron-down"></i>
+						</button>
+					</div>
+					<div class="filter__body">
+						<div class="filter__body_col">
+							<button type="button">Lait de Coco</button>
+						</div>
+					</div>
+				</div>
+				<div class="filter__item bg-red">
+					<div class="filter__header">
+						<input
+							type="text"
+							name="ustensiles"
+							id="ustensiles"
+							placeholder="Ustensiles"
+						/>
+						<button type="button">
+							<i class="fas fa-chevron-down"></i>
+						</button>
+					</div>
+					<div class="filter__body">
+						<div class="filter__body_col">
+							<button type="button">Lait de Coco</button>
+						</div>
+					</div>
+				</div>
+			</div>
+			<!-- !Filter -->
+			<!-- Cards -->
+			<div class="cards">
+				<div class="cards__item">
+					<div class="cards__item__header"></div>
+					<div class="cards__item__body">
+						<div class="cards__item__body__head">
+							<h3>Limonade de Coco</h3>
+							<span>
+								<i class="far fa-clock"></i>
+								<strong>10 min</strong>
+							</span>
+						</div>
+						<div class="cards__item__body__wrap">
+							<ul class="cards__item__body__col">
+								<li><strong>Lait de coco: </strong>400ml</li>
+								<li><strong>Jus de citron: </strong>2</li>
+								<li><strong>Crème de coco: </strong>4 cuillères</li>
+								<li><strong>Sucre: </strong>20g</li>
+								<li><strong>Glaçons: </strong>2</li>
+							</ul>
+							<p class="cards__item__body__col">
+								Lorem ipsum dolor sit amet consectetur adipisicing elit. Perspiciatis,
+								nulla? Nisi, deserunt hic ipsam ab aut, magnam ullam quod laborum
+								assumenda officia veritatis odio officiis, vel suscipit repudiandae
+								commodi quibusdam.
+							</p>
+						</div>
+					</div>
+				</div>
+				<div class="cards__item">
+					<div class="cards__item__header"></div>
+					<div class="cards__item__body">
+						<div class="cards__item__body__head">
+							<h3>Limonade de Coco</h3>
+							<span>
+								<i class="far fa-clock"></i>
+								<strong>10 min</strong>
+							</span>
+						</div>
+						<div class="cards__item__body__wrap">
+							<ul class="cards__item__body__col">
+								<li><strong>Lait de coco: </strong>400ml</li>
+								<li><strong>Jus de citron: </strong>2</li>
+								<li><strong>Crème de coco: </strong>4 cuillères</li>
+								<li><strong>Sucre: </strong>20g</li>
+								<li><strong>Glaçons: </strong>2</li>
+							</ul>
+							<p class="cards__item__body__col">
+								Lorem ipsum dolor sit amet consectetur adipisicing elit. Perspiciatis,
+								nulla? Nisi, deserunt hic ipsam ab aut, magnam ullam quod laborum
+								assumenda officia veritatis odio officiis, vel suscipit repudiandae
+								commodi quibusdam.
+							</p>
+						</div>
+					</div>
+				</div>
+				<div class="cards__item">
+					<div class="cards__item__header"></div>
+					<div class="cards__item__body">
+						<div class="cards__item__body__head">
+							<h3>Limonade de Coco</h3>
+							<span>
+								<i class="far fa-clock"></i>
+								<strong>10 min</strong>
+							</span>
+						</div>
+						<div class="cards__item__body__wrap">
+							<ul class="cards__item__body__col">
+								<li><strong>Lait de coco: </strong>400ml</li>
+								<li><strong>Jus de citron: </strong>2</li>
+								<li><strong>Crème de coco: </strong>4 cuillères</li>
+								<li><strong>Sucre: </strong>20g</li>
+								<li><strong>Glaçons: </strong>2</li>
+							</ul>
+							<p class="cards__item__body__col">
+								Lorem ipsum dolor sit amet consectetur adipisicing elit. Perspiciatis,
+								nulla? Nisi, deserunt hic ipsam ab aut, magnam ullam quod laborum
+								assumenda officia veritatis odio officiis, vel suscipit repudiandae
+								commodi quibusdam. Lorem ipsum dolor sit amet consectetur adipisicing
+								elit. Porro rem ex expedita aliquid quo, non itaque quasi ipsam natus,
+								modi beatae facere ut! Aperiam, assumenda? Quasi accusamus excepturi
+								quia adipisci?
+							</p>
+						</div>
+					</div>
+				</div>
+				<div class="cards__item">
+					<div class="cards__item__header"></div>
+					<div class="cards__item__body">
+						<div class="cards__item__body__head">
+							<h3>Limonade de Coco</h3>
+							<span>
+								<i class="far fa-clock"></i>
+								<strong>10 min</strong>
+							</span>
+						</div>
+						<div class="cards__item__body__wrap">
+							<ul class="cards__item__body__col">
+								<li><strong>Lait de coco: </strong>400ml</li>
+								<li><strong>Jus de citron: </strong>2</li>
+								<li><strong>Crème de coco: </strong>4 cuillères</li>
+								<li><strong>Sucre: </strong>20g</li>
+								<li><strong>Glaçons: </strong>2</li>
+							</ul>
+							<p class="cards__item__body__col">
+								Lorem ipsum dolor sit amet consectetur adipisicing elit. Perspiciatis,
+								nulla? Nisi, deserunt hic ipsam ab aut, magnam ullam quod laborum
+								assumenda officia veritatis odio officiis, vel suscipit repudiandae
+								commodi quibusdam.
+							</p>
+						</div>
+					</div>
+				</div>
+			</div>
+			<!-- !Cards -->
+		</main>
+	</body>
 </html>
