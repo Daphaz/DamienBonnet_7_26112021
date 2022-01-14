@@ -107,28 +107,8 @@
 					font-family: $fnt_rbt;
 					position: relative;
 					overflow: hidden;
-					text-align: justify;
 					line-height: 12px;
-					max-height: 96px;
-					margin-right: -10px;
-					padding-right: 10px;
-
-					&::before {
-						content: "...";
-						position: absolute;
-						right: 0;
-						bottom: 0;
-					}
-
-					&::after {
-						content: "";
-						position: absolute;
-						right: 0;
-						width: 10px;
-						height: 10px;
-						margin-top: 2px;
-						background: $clr_grey200;
-					}
+					min-height: 96px;
 
 					@include sm {
 						height: 100%;

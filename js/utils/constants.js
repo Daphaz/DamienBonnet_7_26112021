@@ -6,6 +6,11 @@ const selectedApplianceFilters = [];
 const selectedUstensilFilters = [];
 
 /**
+ * Cards
+ */
+const cardsContainer = document.querySelector(".cards");
+
+/**
  *  Header
  */
 const mainInput = document.getElementById("search");

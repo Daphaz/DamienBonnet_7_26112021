@@ -49,10 +49,18 @@ const filterReceipes = (receipes) => {
 	};
 };
 
+const createCardReceipes = (receipes) => {
+	cardsContainer.innerHTML = "";
+	receipes.forEach((receipe) => {
+		cardsContainer.append(new CardReceipes(receipe).display());
+	});
+};
+
 const init = async () => {
 	const { receipes } = await getReceipes();
 	filterReceipes(receipes);
 	onFiltersEvent(receipes);
+	createCardReceipes(receipes);
 };
 
 init();
