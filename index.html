@@ -39,7 +39,7 @@
 		</header>
 		<!-- !Header-->
 		<main class="container">
-			<!-- Search -->
+			<!-- Tags -->
 			<div class="search">
 				<div class="search__tag bg-blue">
 					<p class="search__label">Coco</p>
@@ -60,10 +60,10 @@
 					</button>
 				</div>
 			</div>
-			<!-- !Search -->
+			<!-- !Tags -->
 			<!-- Filter-->
 			<div class="filter">
-				<div class="filter__item bg-blue">
+				<div class="filter__item bg-blue" id="ingredientsFilter">
 					<div class="filter__header">
 						<input
 							type="text"
@@ -71,11 +71,11 @@
 							id="ingredients"
 							placeholder="Ingrédients"
 						/>
-						<button type="button">
+						<button type="button" id="ingredientsBtn">
 							<i class="fas fa-chevron-down"></i>
 						</button>
 					</div>
-					<div class="filter__body">
+					<div class="filter__body" id="ingredientsBody">
 						<div class="filter__body_col">
 							<button type="button">Lait de Coco</button>
 							<button type="button">Lait de Coco</button>
@@ -96,7 +96,7 @@
 						</div>
 					</div>
 				</div>
-				<div class="filter__item bg-green">
+				<!-- <div class="filter__item bg-green">
 					<div class="filter__header">
 						<input type="text" name="appareil" id="appareil" placeholder="Appareil" />
 						<button type="button">
@@ -126,7 +126,7 @@
 							<button type="button">Lait de Coco</button>
 						</div>
 					</div>
-				</div>
+				</div> -->
 			</div>
 			<!-- !Filter -->
 			<!-- Cards -->
@@ -245,5 +245,10 @@
 			</div>
 			<!-- !Cards -->
 		</main>
+
+		<script src="./js/main.js"></script>
+		<script src="./js/utils/constants.js"></script>
+		<script src="./js/utils/dom.js"></script>
+		<script src="./js/utils/filters.js"></script>
 	</body>
 </html>
