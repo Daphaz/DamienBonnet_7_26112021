@@ -30,6 +30,13 @@
 			}
 
 			.filter__header {
+				input {
+					max-width: inherit;
+					&::placeholder {
+						opacity: 0.5;
+					}
+				}
+
 				button {
 					i {
 						transform: rotate(180deg);
@@ -100,19 +107,22 @@
 		display: none;
 		justify-content: space-between;
 		flex-wrap: wrap;
-		column-gap: 100px;
 		max-width: 667px;
 
-		&_col {
-			flex-grow: 1;
-		}
-
 		button {
+			width: 33.333%;
 			display: block;
 			font-family: $fnt_lato;
 			text-align: left;
 			font-size: 18px;
 			padding-bottom: 10px;
+
+			@include md {
+				width: 50%;
+			}
+			@include sm {
+				width: 100%;
+			}
 		}
 	}
 }

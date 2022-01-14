@@ -21,12 +21,26 @@ const filterReceipes = (receipes) => {
 		ustensils = [];
 
 	receipes.forEach((receipe) => {
-		ingredients = [
-			...new Set([...ingredients, receipe.ingredients.map((i) => i.ingredient)]),
-		];
-		appliances = [...new Set([...appliances, receipe.appliance])];
-		ustensils = [...new Set([...ustensils, receipe.ustensils.map((u) => u)])];
+		receipe.ingredients.forEach((ing) => {
+			if (!ingredients.includes(ing.ingredient.toLowerCase())) {
+				ingredients.push(ing.ingredient.toLowerCase());
+			}
+		});
+
+		if (!appliances.includes(receipe.appliance.toLowerCase())) {
+			appliances.push(receipe.appliance.toLowerCase());
+		}
+
+		receipe.ustensils.forEach((ustensil) => {
+			if (!ustensils.includes(ustensil.toLowerCase())) {
+				ustensils.push(ustensil.toLowerCase());
+			}
+		});
 	});
+
+	ingredients.sort();
+	appliances.sort();
+	ustensils.sort();
 
 	return {
 		ingredients,

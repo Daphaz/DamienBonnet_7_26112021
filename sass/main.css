@@ -466,6 +466,26 @@ button {
   display: flex;
 }
 
+.filter__item.expand .filter__header input {
+  max-width: inherit;
+}
+
+.filter__item.expand .filter__header input::-webkit-input-placeholder {
+  opacity: 0.5;
+}
+
+.filter__item.expand .filter__header input:-ms-input-placeholder {
+  opacity: 0.5;
+}
+
+.filter__item.expand .filter__header input::-ms-input-placeholder {
+  opacity: 0.5;
+}
+
+.filter__item.expand .filter__header input::placeholder {
+  opacity: 0.5;
+}
+
 .filter__item.expand .filter__header button i {
   -webkit-transform: rotate(180deg);
           transform: rotate(180deg);
@@ -552,23 +572,28 @@ button {
           justify-content: space-between;
   -ms-flex-wrap: wrap;
       flex-wrap: wrap;
-  -webkit-column-gap: 100px;
-          column-gap: 100px;
   max-width: 667px;
 }
 
-.filter__body_col {
-  -webkit-box-flex: 1;
-      -ms-flex-positive: 1;
-          flex-grow: 1;
-}
-
 .filter__body button {
+  width: 33.333%;
   display: block;
   font-family: "Lato", sans-serif;
   text-align: left;
   font-size: 18px;
   padding-bottom: 10px;
+}
+
+@media screen and (max-width: 768px) {
+  .filter__body button {
+    width: 50%;
+  }
+}
+
+@media screen and (max-width: 576px) {
+  .filter__body button {
+    width: 100%;
+  }
 }
 
 .cards {
