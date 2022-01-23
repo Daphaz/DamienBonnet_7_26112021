@@ -108,20 +108,29 @@
 		justify-content: space-between;
 		flex-wrap: wrap;
 		max-width: 667px;
+		margin: 0px -20px;
 
 		button {
-			width: 33.333%;
 			display: block;
+			flex-grow: 0;
+			flex-shrink: 0;
+			flex-basis: calc(33.333% - 40px);
+			max-width: calc(33.333% - 40px);
+			margin: 0px 20px;
 			font-family: $fnt_lato;
 			text-align: left;
 			font-size: 18px;
 			padding-bottom: 10px;
 
 			@include md {
-				width: 50%;
+				flex-basis: calc(50% - 20px);
+				max-width: calc(50% - 20px);
+				margin: 0px 10px;
 			}
 			@include sm {
-				width: 100%;
+				flex-basis: 100%;
+				max-width: 100%;
+				margin: 0px 20px;
 			}
 		}
 	}
