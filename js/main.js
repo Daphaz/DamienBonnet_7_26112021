@@ -1,17 +1,17 @@
 const getReceipes = async () => {
 	try {
-		const datas = await fetch("./js/mocks/datas.json", {
-			mode: "no-cors",
-			method: "GET",
+		const datas = await fetch('./js/mocks/datas.json', {
+			mode: 'no-cors',
+			method: 'GET',
 			headers: {
-				"Content-Type": "application/json",
-				Accept: "application/json",
+				'Content-Type': 'application/json',
+				Accept: 'application/json',
 			},
 		});
 
 		return datas.json();
 	} catch (e) {
-		console.error("getReceipes: ", e);
+		console.error('getReceipes: ', e);
 	}
 };
 
@@ -50,7 +50,6 @@ const filterReceipes = (receipes) => {
 };
 
 const createCardReceipes = (receipes) => {
-	cardsContainer.innerHTML = "";
 	receipes.forEach((receipe) => {
 		cardsContainer.append(new CardReceipes(receipe).display());
 	});
@@ -59,8 +58,10 @@ const createCardReceipes = (receipes) => {
 const init = async () => {
 	const { receipes } = await getReceipes();
 	filterReceipes(receipes);
-	onFiltersEvent(receipes);
+	onFiltersCreateBody(receipes);
+	onFilterBtnEvent();
 	createCardReceipes(receipes);
+	mainInputSearch(receipes);
 };
 
 init();

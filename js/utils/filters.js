@@ -1,147 +1,238 @@
 const removeExpandFilters = () => {
-	ingredientFilter.classList.remove("expand");
-	applianceFilter.classList.remove("expand");
-	ustensilFilter.classList.remove("expand");
+	ingredientFilter.classList.remove('expand');
+	applianceFilter.classList.remove('expand');
+	ustensilFilter.classList.remove('expand');
 
 	ingredientInput.placeholder = ingredientDefaultPlaceholder;
 	applianceInput.placeholder = applianceDefaultPlaceholder;
-	ustensilInput.placeholder = applianceDefaultPlaceholder;
+	ustensilInput.placeholder = ustensilDefaultPlaceholder;
 };
 
-const onFiltersEvent = (receipes) => {
+const onFilterBtnEvent = () => {
+	ingredientButton.addEventListener('click', () => {
+		if (ingredientFilter.classList.contains('expand')) {
+			removeExpandFilters();
+		} else {
+			removeExpandFilters();
+			ingredientFilter.classList.add('expand');
+			ingredientInput.placeholder = ingredientOpenPlaceholder;
+			ingredientInput.focus();
+		}
+	});
+	applianceButton.addEventListener('click', () => {
+		if (applianceFilter.classList.contains('expand')) {
+			removeExpandFilters();
+		} else {
+			removeExpandFilters();
+			applianceFilter.classList.add('expand');
+			applianceInput.placeholder = applianceOpenPlaceholder;
+			applianceInput.focus();
+		}
+	});
+	ustensilButton.addEventListener('click', () => {
+		if (ustensilFilter.classList.contains('expand')) {
+			removeExpandFilters();
+		} else {
+			removeExpandFilters();
+			ustensilFilter.classList.add('expand');
+			ustensilInput.placeholder = ustensilOpenPlaceholder;
+			ustensilInput.focus();
+		}
+	});
+};
+
+const onFilterInputEvent = (type, searches, receipes) => {
+	switch (type) {
+		case 'ingredient':
+			ingredientInput.addEventListener('input', (e) => {
+				ingredientBody.innerHTML = '';
+				if (e.target.value.length > 2) {
+					const query = e.target.value.toLowerCase();
+					const results = searches.filter((ing) => {
+						return ing.toLowerCase().includes(query);
+					});
+
+					results.slice(0, 30).forEach((item) => {
+						const label = formatedStr(item);
+						const btn = createDom('button', label, {
+							type: 'button',
+							class: 'filter__ing-item',
+						});
+
+						btn.addEventListener('click', () => {
+							if (!selectedIngredientFilters.includes(label.toLowerCase())) {
+								selectedIngredientFilters.push(label.toLowerCase());
+							}
+
+							e.target.value = '';
+							removeExpandFilters();
+							createTags(receipes);
+						});
+
+						if (!selectedIngredientFilters.includes(label.toLowerCase())) {
+							ingredientBody.append(btn);
+						}
+					});
+				}
+			});
+			break;
+		case 'appliance':
+			applianceInput.addEventListener('input', (e) => {
+				applianceBody.innerHTML = '';
+				if (e.target.value.length > 2) {
+					const query = e.target.value.toLowerCase();
+					const results = searches.filter((ing) => {
+						return ing.toLowerCase().includes(query);
+					});
+
+					results.slice(0, 30).forEach((item) => {
+						const label = formatedStr(item);
+						const btn = createDom('button', label, {
+							type: 'button',
+							class: 'filter__app-item',
+						});
+
+						btn.addEventListener('click', () => {
+							if (!selectedApplianceFilters.includes(label.toLowerCase())) {
+								selectedApplianceFilters.push(label.toLowerCase());
+							}
+
+							e.target.value = '';
+							removeExpandFilters();
+							createTags(receipes);
+						});
+
+						if (!selectedApplianceFilters.includes(label.toLowerCase())) {
+							applianceBody.append(btn);
+						}
+					});
+				}
+			});
+			break;
+		case 'ustensil':
+			ustensilInput.addEventListener('input', (e) => {
+				ustensilBody.innerHTML = '';
+				if (e.target.value.length > 2) {
+					const query = e.target.value.toLowerCase();
+					const results = searches.filter((ing) => {
+						return ing.toLowerCase().includes(query);
+					});
+
+					results.slice(0, 30).forEach((item) => {
+						const label = formatedStr(item);
+						const btn = createDom('button', label, {
+							type: 'button',
+							class: 'filter__ing-item',
+						});
+
+						btn.addEventListener('click', () => {
+							if (!selectedUstensilFilters.includes(label.toLowerCase())) {
+								selectedUstensilFilters.push(label.toLowerCase());
+							}
+
+							e.target.value = '';
+							removeExpandFilters();
+							createTags(receipes);
+						});
+
+						if (!selectedUstensilFilters.includes(label.toLowerCase())) {
+							ustensilBody.append(btn);
+						}
+					});
+				}
+			});
+			break;
+
+		default:
+			break;
+	}
+};
+
+const onFiltersCreateBody = (receipes) => {
 	const { appliances, ingredients, ustensils } = filterReceipes(receipes);
 
 	/**
 	 *  Ingredients.
 	 */
-	const onClickIngredientsItems = () => {
-		const ingredientItems = document.querySelectorAll(".filter__ing-item");
+	ingredientBody.innerHTML = '';
 
-		ingredientItems.forEach((item) => {
-			item.addEventListener("click", () => {
-				if (!selectedIngredientFilters.includes(item.textContent.toLowerCase())) {
-					selectedIngredientFilters.push(item.textContent.toLowerCase());
-				}
-
-				removeExpandFilters();
-				createTags(receipes);
-			});
+	ingredients.slice(0, 30).forEach((ing) => {
+		const label = formatedStr(ing);
+		const btn = createDom('button', label, {
+			type: 'button',
+			class: 'filter__ust-item',
 		});
-	};
 
-	ingredientButton.addEventListener("click", () => {
-		ingredientBody.innerHTML = "";
+		btn.addEventListener('click', () => {
+			if (!selectedIngredientFilters.includes(label.toLowerCase())) {
+				selectedIngredientFilters.push(label.toLowerCase());
+			}
 
-		ingredients.slice(0, 30).forEach((ing) => {
-			const label = ing.charAt(0).toLocaleUpperCase() + ing.slice(1);
-			const btn = createDom("button", label, {
-				type: "button",
-				class: "filter__ing-item",
-			});
+			removeExpandFilters();
+			createTags(receipes);
+		});
 
+		if (!selectedIngredientFilters.includes(label.toLowerCase())) {
 			ingredientBody.append(btn);
-		});
-
-		if (!ingredientFilter.classList.contains("expand")) {
-			removeExpandFilters();
-
-			ingredientFilter.classList.add("expand");
-			ingredientInput.placeholder = ingredientOpenPlaceholder;
-			ingredientInput.focus();
-		} else {
-			removeExpandFilters();
 		}
-
-		onClickIngredientsItems();
 	});
+
+	onFilterInputEvent('ingredient', ingredients, receipes);
 
 	/**
 	 *  Appliances.
 	 */
-	const onClickAppliancesItems = () => {
-		const applianceItems = document.querySelectorAll(".filter__app-item");
+	applianceBody.innerHTML = '';
 
-		applianceItems.forEach((item) => {
-			item.addEventListener("click", () => {
-				if (!selectedApplianceFilters.includes(item.textContent.toLowerCase())) {
-					selectedApplianceFilters.push(item.textContent.toLowerCase());
-				}
-
-				removeExpandFilters();
-
-				createTags(receipes);
-			});
+	appliances.slice(0, 30).forEach((appliance) => {
+		const label = formatedStr(appliance);
+		const btn = createDom('button', label, {
+			type: 'button',
+			class: 'filter__app-item',
 		});
-	};
 
-	applianceButton.addEventListener("click", () => {
-		applianceBody.innerHTML = "";
+		btn.addEventListener('click', () => {
+			if (!selectedApplianceFilters.includes(label.toLowerCase())) {
+				selectedApplianceFilters.push(label.toLowerCase());
+			}
 
-		appliances.slice(0, 30).forEach((appliance) => {
-			const label = appliance.charAt(0).toLocaleUpperCase() + appliance.slice(1);
-			const btn = createDom("button", label, {
-				type: "button",
-				class: "filter__app-item",
-			});
+			removeExpandFilters();
 
+			createTags(receipes);
+		});
+
+		if (!selectedApplianceFilters.includes(label.toLowerCase())) {
 			applianceBody.append(btn);
-		});
-
-		if (!applianceFilter.classList.contains("expand")) {
-			removeExpandFilters();
-
-			applianceFilter.classList.add("expand");
-			applianceInput.placeholder = applianceOpenPlaceholder;
-			applianceInput.focus();
-		} else {
-			removeExpandFilters();
 		}
-
-		onClickAppliancesItems();
 	});
+
+	onFilterInputEvent('appliance', appliances, receipes);
 
 	/**
 	 *  Ustensils.
 	 */
-	const onClickUstensilsItems = () => {
-		const ustensilItems = document.querySelectorAll(".filter__ust-item");
+	ustensilBody.innerHTML = '';
 
-		ustensilItems.forEach((item) => {
-			item.addEventListener("click", () => {
-				if (!selectedUstensilFilters.includes(item.textContent.toLowerCase())) {
-					selectedUstensilFilters.push(item.textContent.toLowerCase());
-				}
-
-				removeExpandFilters();
-
-				createTags(receipes);
-			});
+	ustensils.slice(0, 30).forEach((ustensil) => {
+		const label = formatedStr(ustensil);
+		const btn = createDom('button', label, {
+			type: 'button',
+			class: 'filter__ust-item',
 		});
-	};
 
-	ustensilButton.addEventListener("click", () => {
-		ustensilBody.innerHTML = "";
+		btn.addEventListener('click', () => {
+			if (!selectedUstensilFilters.includes(label.toLowerCase())) {
+				selectedUstensilFilters.push(label.toLowerCase());
+			}
 
-		ustensils.slice(0, 30).forEach((ustensil) => {
-			const label = ustensil.charAt(0).toLocaleUpperCase() + ustensil.slice(1);
-			const btn = createDom("button", label, {
-				type: "button",
-				class: "filter__ust-item",
-			});
+			removeExpandFilters();
+			createTags(receipes);
+		});
 
+		if (!selectedUstensilFilters.includes(label.toLowerCase())) {
 			ustensilBody.append(btn);
-		});
-
-		if (!ustensilFilter.classList.contains("expand")) {
-			removeExpandFilters();
-
-			ustensilFilter.classList.add("expand");
-			ustensilInput.placeholder = ustensilOpenPlaceholder;
-			ustensilInput.focus();
-		} else {
-			removeExpandFilters();
 		}
-
-		onClickUstensilsItems();
 	});
+
+	onFilterInputEvent('ustensil', ustensils, receipes);
 };
