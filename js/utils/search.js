@@ -1,18 +1,28 @@
 const mainInputSearch = (receipes) => {
 	mainInput.addEventListener('input', (e) => {
 		if (e.target.value.length > 2) {
+			const results = [];
 			cardsContainer.innerHTML = '';
 			const query = e.target.value.toLowerCase();
 
-			const results = receipes.filter((receipe) => {
-				return (
-					receipe.name.toLowerCase().startsWith(query) ||
-					receipe.description.toLowerCase().includes(query) ||
-					receipe.ingredients.some((ing) =>
-						ing.ingredient.toLowerCase().includes(query)
-					)
-				);
-			});
+			for (let i = 0; i < receipes.length; i++) {
+				const { name, ingredients, description } = receipes[i];
+				const includesInName = name.toLowerCase().includes(query);
+				const includesInDescription = description.toLowerCase().includes(query);
+				let includesInIngredients = false;
+
+				for (let j = 0; j < ingredients.length; j++) {
+					const element = ingredients[j];
+					if (element.ingredient.toLowerCase().includes(query)) {
+						includesInIngredients = true;
+						break;
+					}
+				}
+
+				if (includesInName || includesInDescription || includesInIngredients) {
+					results.push(receipes[i]);
+				}
+			}
 
 			if (
 				!selectedIngredientFilters.length &&
