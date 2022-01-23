@@ -10,7 +10,11 @@ const mainInputSearch = (receipes) => {
 					receipe.description.toLowerCase().includes(query) ||
 					receipe.ingredients.some((ing) =>
 						ing.ingredient.toLowerCase().includes(query)
-					)
+					) ||
+					receipe.ustensils.some((ustensil) =>
+						ustensil.toLowerCase().includes(query)
+					) ||
+					receipe.appliance.toLowerCase().includes(query)
 				);
 			});
 
