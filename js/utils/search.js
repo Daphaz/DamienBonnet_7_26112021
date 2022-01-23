@@ -6,10 +6,13 @@ const mainInputSearch = (receipes) => {
 			const query = e.target.value.toLowerCase();
 
 			for (let i = 0; i < receipes.length; i++) {
-				const { name, ingredients, description } = receipes[i];
+				const { name, ingredients, appliance, ustensils, description } =
+					receipes[i];
 				const includesInName = name.toLowerCase().includes(query);
 				const includesInDescription = description.toLowerCase().includes(query);
+				const includesInAppliance = appliance.toLowerCase().includes(query);
 				let includesInIngredients = false;
+				let includesInUstensils = false;
 
 				for (let j = 0; j < ingredients.length; j++) {
 					const element = ingredients[j];
@@ -19,7 +22,21 @@ const mainInputSearch = (receipes) => {
 					}
 				}
 
-				if (includesInName || includesInDescription || includesInIngredients) {
+				for (let k = 0; k < ustensils.length; k++) {
+					const element = ustensils[k];
+					if (element.toLowerCase().includes(query)) {
+						includesInUstensils = true;
+						break;
+					}
+				}
+
+				if (
+					includesInName ||
+					includesInDescription ||
+					includesInIngredients ||
+					includesInAppliance ||
+					includesInUstensils
+				) {
 					results.push(receipes[i]);
 				}
 			}
